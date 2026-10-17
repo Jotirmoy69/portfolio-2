@@ -1,0 +1,357 @@
+.section {
+  position: relative;
+  padding: clamp(80px, 14vh, 160px) var(--pad);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 70, "wght" 700;
+  letter-spacing: -0.03em;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  color: var(--fg-muted);
+}
+
+.pause {
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 16px 0;
+  margin: -16px 0;
+}
+
+.pause:hover {
+  color: var(--accent);
+}
+
+.grid {
+  --dw: clamp(320px, 30vw, 460px);
+  grid-template-columns: minmax(0, 1fr) var(--dw);
+  align-items: stretch;
+  gap: clamp(32px, 4vw, 64px);
+  display: grid;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.item {
+  box-sizing: border-box;
+  border-top: 1px solid var(--border);
+  min-height: 40vh;
+  color: var(--fg);
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  grid-template-areas:
+    "num name year"
+    ". meta meta";
+  align-content: center;
+  align-items: baseline;
+  gap: 16px clamp(12px, 2vw, 28px);
+  padding: clamp(20px, 3vw, 34px) 0;
+  display: grid;
+  text-align: left;
+  transition: padding 0.6s var(--ease-out), color 0.3s;
+}
+
+@media (hover: hover) {
+  .item:hover {
+    color: var(--accent);
+    padding-left: 28px;
+  }
+}
+
+.item:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+.index {
+  font-family: var(--font-mono);
+  color: var(--fg-muted);
+  transition: color 0.4s;
+  grid-area: num;
+  font-size: 12px;
+}
+
+.itemActive .index {
+  color: var(--accent);
+}
+
+.itemTitle {
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  font-variation-settings: "wdth" 72, "wght" 700;
+  grid-area: name;
+  min-width: 0;
+  font-size: clamp(32px, 4.8vw, 92px);
+  line-height: 0.92;
+  font-weight: 700;
+}
+
+.year {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  color: var(--fg-muted);
+  grid-area: year;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.meta {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  flex-wrap: wrap;
+  grid-area: meta;
+  gap: 6px 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.note {
+  color: var(--accent);
+}
+
+.link {
+  color: var(--fg);
+  white-space: nowrap;
+  opacity: 0;
+  margin-left: auto;
+  transition: opacity 0.25s, transform 0.25s var(--ease-out);
+  transform: translate(-8px);
+}
+
+.itemActive .link,
+.item:focus-visible .link {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.5s var(--ease-out) 0.15s,
+    transform 0.7s var(--ease-out) 0.15s;
+}
+
+@media (hover: hover) {
+  .item:hover .link {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.5s var(--ease-out) 0.15s,
+      transform 0.7s var(--ease-out) 0.15s;
+  }
+}
+
+.stageCol {
+  position: relative;
+}
+
+.stageDock {
+  top: calc(50vh - var(--dw) * 0.625);
+  position: sticky;
+}
+
+.stage {
+  box-sizing: border-box;
+  aspect-ratio: 4 / 5;
+  border: 0;
+  border-radius: 22px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+  filter: url(#SkiperSquiCircleFilterLayout);
+}
+
+/* Static cover: only when motion/card is unavailable */
+.stageRest {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+:global(html[data-motion="off"]) .stageRest {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stageRest {
+    display: block;
+  }
+}
+
+.big {
+  font-variation-settings: "wdth" 70, "wght" 800;
+  color: #5f5a54;
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+  font-weight: 800;
+  user-select: none;
+}
+
+.stageMobile {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+.stageInner {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.stageInnerActive {
+  opacity: 1;
+}
+
+.stageImg {
+  object-fit: cover;
+  filter: none !important;
+  border-radius: 0 !important;
+}
+
+.stageMeta {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  font-size: 12px;
+  display: flex;
+}
+
+.stageCur {
+  color: var(--accent);
+}
+
+.stagePlat {
+  color: var(--fg-muted);
+}
+
+.track {
+  background: rgba(237, 234, 228, 0.12);
+  height: 2px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.bar {
+  background: var(--accent);
+  height: 100%;
+  width: 100%;
+  will-change: transform;
+}
+
+/* MW floating card — rests on frame, lifts toward cursor on hover */
+.hoverCard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 400px;
+  border-radius: 22px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0;
+  transform: translate3d(-200px, -200px, 0);
+  will-change: transform, opacity;
+  filter: url(#SkiperSquiCircleFilterLayout);
+  background: var(--surface);
+  transform-origin: center center;
+}
+
+.hoverLayer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+
+.hoverLayerActive {
+  opacity: 1;
+}
+
+.hoverCardImg {
+  object-fit: cover;
+  filter: none !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stageCol {
+    order: -1;
+  }
+
+  .stageDock {
+    position: relative;
+    top: auto;
+  }
+
+  .big {
+    display: none;
+  }
+
+  .stageRest {
+    display: none;
+  }
+
+  .stageMobile {
+    display: block;
+  }
+
+  .stage {
+    aspect-ratio: 16 / 9;
+  }
+
+  .item {
+    min-height: 0;
+    padding: 1.5rem 0;
+  }
+
+  .itemTitle {
+    white-space: normal;
+    font-size: clamp(28px, 10vw, 48px);
+  }
+
+  .hoverCard {
+    display: none !important;
+  }
+}

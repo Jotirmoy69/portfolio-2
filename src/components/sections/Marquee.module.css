@@ -1,0 +1,47 @@
+.wrap {
+  padding: 18px 0;
+  overflow: hidden;
+}
+
+.track {
+  will-change: transform;
+  width: max-content;
+  display: flex;
+  animation: scroll 36s linear infinite;
+}
+
+.item {
+  font-variation-settings: "wdth" 110, "wght" 250;
+  white-space: nowrap;
+  align-items: center;
+  gap: 40px;
+  padding-right: 40px;
+  font-size: clamp(36px, 5vw, 72px);
+  font-style: italic;
+  display: flex;
+  color: var(--fg);
+}
+
+.diamond {
+  background: var(--accent);
+  width: 12px;
+  height: 12px;
+  display: block;
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}

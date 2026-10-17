@@ -1,0 +1,156 @@
+.hero {
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100svh;
+  padding: clamp(100px, 15vh, 150px) var(--pad) 0;
+  display: flex;
+  position: relative;
+}
+
+.meta {
+  grid-template-columns: 1fr auto 1fr;
+  gap: 12px;
+  display: grid;
+  color: var(--fg-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.meta > :first-child {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.metaCentre {
+  grid-column: 2;
+  justify-self: center;
+}
+
+.meta > :last-child {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.titleWrap {
+  flex-direction: column;
+  flex: 1 1 auto;
+  justify-content: center;
+  min-height: 0;
+  margin: clamp(24px, 5vh, 56px) 0;
+  display: flex;
+  container-type: size;
+}
+
+.title {
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-weight: 850;
+  font-variation-settings: "wdth" 70, "wght" 850;
+  line-height: 0.86;
+  /* Match MW: min(19vw, ~53cqh) — fills the name block */
+  font-size: min(11.5vw, 42cqh);
+  overflow: hidden;
+}
+
+.title :global([aria-hidden]) {
+  display: block;
+  padding: 0.04em 0;
+  overflow: hidden;
+}
+
+/* KineticText: sr-only + two lines — second line right-aligned like MW */
+.title > span[aria-hidden]:nth-of-type(3) {
+  text-align: right;
+}
+
+.bottom {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: end;
+  gap: 28px;
+  padding-bottom: 40px;
+  display: grid;
+}
+
+.intro {
+  text-wrap: pretty;
+  max-width: 34ch;
+  margin: 0;
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.4;
+  font-variation-settings: "wdth" 95, "wght" 420;
+}
+
+.scroll {
+  justify-self: center;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding-bottom: 0.35rem;
+}
+
+.ctaRow {
+  justify-self: end;
+}
+
+.cta {
+  text-align: center;
+  border: 0;
+  border-radius: 28px;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding: 18px 28px;
+  font-size: 12px;
+  display: inline-block;
+  transition: color 0.3s, background 0.3s;
+  will-change: transform;
+}
+
+.cta:hover {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--surface) 80%, var(--accent));
+}
+
+@media (max-width: 900px) {
+  .title {
+    font-size: min(16vw, 22vw);
+    white-space: normal;
+  }
+
+  .title > span[aria-hidden]:nth-of-type(3) {
+    text-align: left;
+  }
+
+  .bottom {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-bottom: 28px;
+  }
+
+  .scroll {
+    justify-self: start;
+    order: 3;
+  }
+
+  .ctaRow {
+    justify-self: start;
+  }
+
+  .meta {
+    gap: 0.35rem;
+  }
+
+  .metaCentre,
+  .meta > :last-child {
+    justify-self: start;
+    grid-column: 1;
+  }
+}

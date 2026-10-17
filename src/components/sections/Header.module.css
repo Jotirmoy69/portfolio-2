@@ -1,0 +1,137 @@
+.header {
+  z-index: 100;
+  padding: 18px var(--pad);
+  background: linear-gradient(rgb(17, 16, 16) 10%, rgba(17, 16, 16, 0));
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  display: grid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.header > * {
+  pointer-events: auto;
+}
+
+.logo {
+  color: var(--fg);
+  grid-column: 1;
+  justify-self: start;
+  align-items: baseline;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.logoFirst {
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  font-variation-settings: "wdth" 68, "wght" 850;
+}
+
+.logoW {
+  background: var(--accent);
+  width: 0.8em;
+  height: 0.95em;
+  color: var(--accent-ink);
+  font-variation-settings: "wdth" 110, "wght" 300;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  margin: 0 0.04em 0 0.1em;
+  font-style: italic;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoFill {
+  background: var(--fg);
+  transform-origin: center bottom;
+  will-change: transform;
+  position: absolute;
+  inset: 0;
+  transform: scaleY(var(--logo-progress, 0));
+  pointer-events: none;
+  opacity: 0.25;
+}
+
+.logoLetter {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+.logoRest {
+  letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 110, "wght" 250;
+  font-style: italic;
+}
+
+.nav {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  grid-column: 3;
+  justify-self: end;
+  align-items: center;
+  gap: clamp(14px, 2.2vw, 30px);
+  font-size: 12px;
+  display: flex;
+}
+
+.nav a {
+  align-items: center;
+  gap: 7px;
+  padding: 4px 0;
+  display: flex;
+  opacity: 0.9;
+  transition: opacity 0.25s;
+}
+
+.nav a:hover {
+  opacity: 1;
+}
+
+.dot {
+  background: var(--accent);
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+  display: none;
+}
+
+.nav a:hover .dot {
+  display: block;
+}
+
+.cta {
+  border-radius: 22px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  padding: 10px 16px;
+  font-weight: 500;
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+  transition: background 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.cta:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+@media (max-width: 720px) {
+  .nav a {
+    display: none;
+  }
+}
