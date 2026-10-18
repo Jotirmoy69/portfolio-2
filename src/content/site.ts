@@ -105,7 +105,7 @@ export const projects: Project[] = [
     kind: "AI Git tooling",
     note: "Open source",
     platforms: "CLI",
-    href: "https://github.com/Jotirmoy69/please",
+    href: "https://github.com/HylithLabs/please",
     color: "#3D2C29",
     cover: "/please_mockup.jpg",
     closeups: ["/please_mockup.jpg", "/please_mockup.jpg"],
