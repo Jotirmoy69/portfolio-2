@@ -21,7 +21,7 @@ export const site = {
     line1: "Jotirmoy",
     line2: "Bhowmik",
     intro:
-      "I build real-world software from the ground up — SaaS, web apps, backend APIs and systems for businesses that have outgrown spreadsheets and manual workflows.",
+      "I build full-stack products from SaaS and web apps to backend APIs and distributed systems that replace manual workflows with software built to grow with your business.",
     scrollHint: "↓ Scroll, gently",
   },
   skills: [
