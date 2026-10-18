@@ -159,8 +159,8 @@ export const projects: Project[] = [
     color: "#15261F",
     cover:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80",
+    // Single closeup until dedicated desktop/mobile mockups exist
     closeups: [
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     ],
   },
