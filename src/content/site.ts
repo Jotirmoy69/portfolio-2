@@ -128,7 +128,7 @@ export const projects: Project[] = [
     color: "#1A1F36",
     cover: "/hylith_mockup.jpg",
     coverMobile: "/hylith_horizontal.jpg",
-    closeups: ["/hylith_mockup.jpg", "/hylith_horizontal.jpg"],
+    closeups: ["/hylith_mockup.jpg"],
   },
   {
     id: "please",
@@ -142,7 +142,7 @@ export const projects: Project[] = [
     color: "#3D2C29",
     cover: "/please_mockup.jpg",
     coverMobile: "/please_horizontal.jpg",
-    closeups: ["/please_mockup.jpg", "/please_horizontal.jpg"],
+    closeups: ["/please_mockup.jpg"],
   },
   {
     id: "hylith-telemedicine",
@@ -159,7 +159,6 @@ export const projects: Project[] = [
     color: "#15261F",
     cover:
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80",
-    // Single closeup until dedicated desktop/mobile mockups exist
     closeups: [
       "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     ],
@@ -176,7 +175,7 @@ export const projects: Project[] = [
     color: "#2A2438",
     cover: "/busSorting_mockup.jpg",
     coverMobile: "/busSorting_horizontal.jpg",
-    closeups: ["/busSorting_mockup.jpg", "/busSorting_horizontal.jpg"],
+    closeups: ["/busSorting_mockup.jpg"],
   },
 ];
 

@@ -9,16 +9,9 @@ type Frame = {
   src: string;
   label: string;
   id: string;
-  /** Landscape mockups need a wide frame or object-fit:cover makes them look like the desktop shot */
-  wide: boolean;
 };
 
 const DRAG_THRESHOLD = 8;
-
-function isWideSrc(src: string, coverMobile?: string) {
-  if (coverMobile && src === coverMobile) return true;
-  return /_horizontal\.(jpe?g|png|webp)$/i.test(src);
-}
 
 export function UpClose() {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -33,38 +26,11 @@ export function UpClose() {
 
   const frames = useMemo<Frame[]>(
     () =>
-      projects.flatMap((p) => {
-        // Prefer explicit desktop + mobile covers when both exist
-        const shots =
-          p.coverMobile != null
-            ? [
-                { src: p.cover, wide: false, kind: "Desktop" },
-                { src: p.coverMobile, wide: true, kind: "Mobile" },
-              ]
-            : [...new Set(p.closeups)].map((src, i, arr) => ({
-                src,
-                wide: isWideSrc(src, p.coverMobile),
-                kind:
-                  arr.length < 2 ? "" : i === 0 ? "Desktop" : "Mobile",
-              }));
-
-        // Skip identical paths
-        const seen = new Set<string>();
-        return shots.flatMap((shot) => {
-          if (seen.has(shot.src)) return [];
-          seen.add(shot.src);
-          return [
-            {
-              src: shot.src,
-              wide: shot.wide,
-              id: `${p.id}-${shot.wide ? "m" : "d"}`,
-              label: shot.kind
-                ? `(${p.index}) ${p.title} ${shot.kind}`
-                : `(${p.index}) ${p.title}`,
-            },
-          ];
-        });
-      }),
+      projects.map((p) => ({
+        id: p.id,
+        src: p.closeups[0] || p.cover,
+        label: `(${p.index}) ${p.title}`,
+      })),
     [],
   );
 
@@ -186,20 +152,13 @@ export function UpClose() {
       >
         <div ref={trackRef} className={styles.track}>
           {frames.map((frame) => (
-            <figure
-              key={frame.id}
-              className={`${styles.card} ${frame.wide ? styles.cardWide : ""}`}
-            >
+            <figure key={frame.id} className={styles.card}>
               <Image
                 src={frame.src}
                 alt=""
-                width={frame.wide ? 1200 : 840}
-                height={frame.wide ? 750 : 1050}
-                sizes={
-                  frame.wide
-                    ? "(max-width: 720px) 88vw, 560px"
-                    : "(max-width: 720px) 72vw, 420px"
-                }
+                width={840}
+                height={1050}
+                sizes="(max-width: 720px) 72vw, 420px"
                 draggable={false}
               />
               <figcaption className={styles.caption}>{frame.label}</figcaption>
