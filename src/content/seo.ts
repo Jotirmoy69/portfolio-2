@@ -1,9 +1,7 @@
 import { site } from "./site";
 
-/** Canonical site URL — set NEXT_PUBLIC_SITE_URL in Vercel for custom domains. */
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://jotirmoy.vercel.app";
+/** Canonical site URL used by metadata, structured data, robots.txt, and sitemap.xml. */
+export const siteUrl = "https://jotirmoy.is-a.dev";
 
 export const seo = {
   title: {
