@@ -72,6 +72,26 @@ Most non-blog copy lives in [`src/content/site.ts`](src/content/site.ts):
 
 Project mockups usually go in `public/` (e.g. `public/hylith_mockup.jpg`) and are referenced as `/hylith_mockup.jpg`.
 
+## Blog on the website
+
+Where posts show up after you add a Markdown file:
+
+| Surface | URL / place | What it does |
+| --- | --- | --- |
+| Homepage preview | `/` → **Writing** section | Latest **3** posts + link to all |
+| Blog index | `/blog` | Full list, newest first |
+| Single post | `/blog/your-post-slug` | Full article (Markdown rendered) |
+| Header nav | “Writing” / blog link | Jumps to homepage `#blog` or `/blog` |
+
+Technical pieces (you usually don’t touch these when writing a post):
+
+- Routes: `src/app/blog/page.tsx`, `src/app/blog/[slug]/page.tsx`
+- Loader: `src/lib/blog.ts` (reads `content/blog/*.md`)
+- UI: `src/components/blog/*` and homepage `src/components/sections/Blog.tsx`
+- SEO: per-post metadata, `BlogPosting` JSON-LD, entries in `sitemap.xml` and `public/llms.txt`
+
+There is **no CMS and no sidebar editor** — the site is static Markdown → Next.js pages. Edit `.md` files, push, Vercel rebuilds the web pages.
+
 ## How to add a new blog post
 
 You do **not** hardcode posts in React. Drop a Markdown file into `content/blog/` and redeploy.
