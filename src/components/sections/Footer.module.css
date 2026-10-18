@@ -59,7 +59,13 @@
   transition: color 0.25s;
 }
 
-.email:hover {
+@media (hover: hover) {
+  .email:hover {
+    color: var(--accent);
+  }
+}
+
+.email:active {
   color: var(--accent);
 }
 
@@ -73,7 +79,13 @@
   transition: color 0.25s;
 }
 
-.socials a:hover {
+@media (hover: hover) {
+  .socials a:hover {
+    color: var(--accent);
+  }
+}
+
+.socials a:active {
   color: var(--accent);
 }
 

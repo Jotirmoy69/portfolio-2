@@ -23,6 +23,26 @@
     color: var(--accent);
     padding-left: 16px;
   }
+
+  .row:hover .index {
+    color: var(--accent);
+  }
+
+  .row:hover .read,
+  .row:focus-visible .read {
+    opacity: 1;
+    transform: none;
+    color: var(--accent);
+  }
+}
+
+.row:active {
+  color: var(--accent);
+  padding-left: 12px;
+}
+
+.row:active .index {
+  color: var(--accent);
 }
 
 .index {
@@ -30,10 +50,7 @@
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--fg-muted);
-}
-
-.row:hover .index {
-  color: var(--accent);
+  transition: color 0.3s;
 }
 
 .title {
@@ -90,7 +107,6 @@
     color 0.25s;
 }
 
-.row:hover .read,
 .row:focus-visible .read {
   opacity: 1;
   transform: none;

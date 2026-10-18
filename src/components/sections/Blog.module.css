@@ -27,6 +27,12 @@
   transition: color 0.3s;
 }
 
-.all:hover {
+@media (hover: hover) {
+  .all:hover {
+    color: var(--accent);
+  }
+}
+
+.all:active {
   color: var(--accent);
 }
