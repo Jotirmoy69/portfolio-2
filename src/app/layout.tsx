@@ -28,6 +28,9 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   category: "technology",
+  verification: {
+    google: "2KBxWDHSpViVQBYHYKWtE5wSjh7Z4cKKHC-upWK0ndU",
+  },
   alternates: {
     canonical: "/",
   },
