@@ -26,13 +26,19 @@ export function UpClose() {
 
   const frames = useMemo<Frame[]>(
     () =>
-      projects.flatMap((p) =>
-        p.closeups.map((src, i) => ({
+      projects.flatMap((p) => {
+        // Drop accidental duplicate paths so Mobile/Detail aren't the same shot
+        const unique = [...new Set(p.closeups)];
+        const suffix = (i: number) => {
+          if (unique.length < 2) return "";
+          return i === 0 ? " Mobile" : " Detail";
+        };
+        return unique.map((src, i) => ({
           src,
           id: `${p.id}-${i}`,
-          label: `(${p.index}) ${p.title}${i === 0 ? " Mobile" : " Detail"}`,
-        })),
-      ),
+          label: `(${p.index}) ${p.title}${suffix(i)}`,
+        }));
+      }),
     [],
   );
 
