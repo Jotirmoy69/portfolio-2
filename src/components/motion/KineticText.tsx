@@ -41,6 +41,7 @@ export function KineticText({
   const rootRef = useRef<HTMLElement>(null);
   const { reducedMotion, isTouch, ready } = useMotion();
 
+  // Desktop: cursor proximity warp
   useEffect(() => {
     const root = rootRef.current;
     if (!root || reducedMotion || isTouch || !ready) return;
@@ -101,6 +102,68 @@ export function KineticText({
     minWeight,
     radius,
     settleDuration,
+  ]);
+
+  // Mobile: one-shot weight/width wave when the block enters the viewport
+  useEffect(() => {
+    const root = rootRef.current;
+    if (!root || reducedMotion || !isTouch || !ready) return;
+
+    const letters = [
+      ...root.querySelectorAll<HTMLElement>("[data-letter]"),
+    ];
+    if (letters.length === 0) return;
+
+    let played = false;
+    let raf = 0;
+
+    const wave = () => {
+      if (played) return;
+      played = true;
+      const start = performance.now();
+      const peak = 0.55;
+      const duration = 900 + letters.length * 18;
+
+      const tick = (now: number) => {
+        const t = Math.min(1, (now - start) / duration);
+        for (let i = 0; i < letters.length; i++) {
+          const local = t * 1.35 - (i / letters.length) * 0.55;
+          const h =
+            local <= 0 || local >= 1
+              ? 0
+              : Math.sin(local * Math.PI) * peak;
+          const wdth = restWidth + (maxWidth - restWidth) * h;
+          const wght = restWeight + (minWeight - restWeight) * h;
+          letters[i].style.fontVariationSettings = `"wdth" ${wdth.toFixed(1)}, "wght" ${wght.toFixed(0)}`;
+        }
+        if (t < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting && e.intersectionRatio > 0.35)) {
+          wave();
+          io.disconnect();
+        }
+      },
+      { threshold: [0.35, 0.55] },
+    );
+    io.observe(root);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [
+    reducedMotion,
+    isTouch,
+    ready,
+    restWidth,
+    restWeight,
+    maxWidth,
+    minWeight,
   ]);
 
   return (

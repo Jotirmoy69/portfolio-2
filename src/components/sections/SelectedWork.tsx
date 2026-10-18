@@ -136,6 +136,29 @@ export function SelectedWork() {
   const onEnterList = useCallback(() => setHovering(true), []);
   const onLeaveList = useCallback(() => setHovering(false), []);
 
+  const touchHold = useRef<number | null>(null);
+
+  const selectProject = useCallback(
+    (i: number) => {
+      setActive(i);
+      if (!isTouch) return;
+      setHovering(true);
+      if (touchHold.current) window.clearTimeout(touchHold.current);
+      touchHold.current = window.setTimeout(() => {
+        setHovering(false);
+        touchHold.current = null;
+      }, AUTO_MS);
+    },
+    [isTouch],
+  );
+
+  useEffect(
+    () => () => {
+      if (touchHold.current) window.clearTimeout(touchHold.current);
+    },
+    [],
+  );
+
   const card = (
     <div ref={cardRef} className={styles.hoverCard} aria-hidden>
       {projects.map((project, i) => (
@@ -195,6 +218,8 @@ export function SelectedWork() {
               rel={project.href?.startsWith("http") ? "noreferrer" : undefined}
               className={`${styles.item} ${i === active ? styles.itemActive : ""}`}
               onMouseEnter={() => setActive(i)}
+              onFocus={() => selectProject(i)}
+              onPointerDown={() => selectProject(i)}
               data-cursor="View"
             >
               <span className={styles.index}>{project.index}</span>

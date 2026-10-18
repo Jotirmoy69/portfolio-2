@@ -22,6 +22,16 @@
   color: var(--fg-muted);
 }
 
+.hint::after {
+  content: " or scroll";
+}
+
+@media (hover: none) {
+  .hint::after {
+    content: " · Swipe";
+  }
+}
+
 .viewport {
   overflow: hidden;
   cursor: grab;
@@ -67,8 +77,14 @@
   border-radius: 0;
 }
 
-.card:hover img {
-  transform: scale(1.08);
+@media (hover: hover) {
+  .card:hover img {
+    transform: scale(1.08);
+  }
+}
+
+.viewport:active .card img {
+  transform: scale(1.04);
 }
 
 .caption {

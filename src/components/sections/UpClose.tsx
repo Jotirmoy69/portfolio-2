@@ -151,7 +151,7 @@ export function UpClose() {
         <h2 id="upclose-title" className={styles.title}>
           (Up close)
         </h2>
-        <span className={`mono ${styles.hint}`}>Drag or scroll</span>
+        <span className={`mono ${styles.hint}`}>Drag</span>
       </div>
       <div
         ref={viewportRef}

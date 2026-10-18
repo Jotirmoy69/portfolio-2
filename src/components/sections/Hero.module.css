@@ -114,9 +114,17 @@
   will-change: transform;
 }
 
-.cta:hover {
+@media (hover: hover) {
+  .cta:hover {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--surface) 80%, var(--accent));
+  }
+}
+
+.cta:active {
   color: var(--accent);
   background: color-mix(in srgb, var(--surface) 80%, var(--accent));
+  transform: scale(0.97);
 }
 
 @media (max-width: 900px) {
@@ -138,6 +146,19 @@
   .scroll {
     justify-self: start;
     order: 3;
+    animation: scrollNudge 2.4s var(--ease-out) infinite;
+  }
+
+  @keyframes scrollNudge {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.75;
+    }
+    50% {
+      transform: translateY(6px);
+      opacity: 1;
+    }
   }
 
   .ctaRow {
