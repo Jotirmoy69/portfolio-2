@@ -1,10 +1,10 @@
 # Jotirmoy Bhowmik
 
-> Backend engineer and full-stack developer based in Rajshahi, Bangladesh.
+> Full-stack developer and founder-minded builder based in Rajshahi, Bangladesh. Founder at Hylith.
 
 ## Summary
 
-Jotirmoy Bhowmik designs and builds APIs and production systems with a deep backend focus — NestJS, TypeScript, Node.js, Kafka microservices, CQRS, and Next.js when the product needs a front end. Available for hire for backend engineering, API design, microservices architecture, and full-stack product work.
+Jotirmoy Bhowmik builds software products from the ground up — not just features, the full thing: idea, architecture and launch. His work covers SaaS, web applications, backend APIs, microservices and automation for online businesses that have outgrown manual workflows. Deep backend craft in NestJS, TypeScript, Kafka and CQRS when systems need to scale; product-minded end-to-end when a business needs something that ships.
 
 ## Contact
 
@@ -16,12 +16,12 @@ Jotirmoy Bhowmik designs and builds APIs and production systems with a deep back
 
 ## Skills
 
-NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.js, system design, API gateways
+NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.js, SaaS MVPs, system design, API gateways
 
 ## Selected work
 
 - Hylith — SaaS & product systems (full-stack)
-- Please CLI — AI Git tooling (open source)
+- Please CLI — AI Git tooling (open source, Hylith Labs)
 - Kafka CQRS — NestJS event architecture
 - Kong Gateway — API gateway & load balancing
 
