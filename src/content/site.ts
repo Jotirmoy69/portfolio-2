@@ -103,8 +103,15 @@ export type Project = {
   note?: string;
   platforms?: string;
   href?: string;
+  /** Private / under wraps — click opens a notice instead of a public link */
+  locked?: boolean;
+  lockedTitle?: string;
+  lockedBody?: string;
   color: string;
+  /** Desktop / wide stage + hover card */
   cover: string;
+  /** Narrow / mobile stage (falls back to cover) */
+  coverMobile?: string;
   closeups: string[];
 };
 
@@ -120,7 +127,8 @@ export const projects: Project[] = [
     href: "https://hylith.com",
     color: "#1A1F36",
     cover: "/hylith_mockup.jpg",
-    closeups: ["/hylith_mockup.jpg"],
+    coverMobile: "/hylith_horizontal.jpg",
+    closeups: ["/hylith_mockup.jpg", "/hylith_horizontal.jpg"],
   },
   {
     id: "please",
@@ -133,40 +141,42 @@ export const projects: Project[] = [
     href: "https://github.com/HylithLabs/please",
     color: "#3D2C29",
     cover: "/please_mockup.jpg",
-    closeups: ["/please_mockup.jpg"],
+    coverMobile: "/please_horizontal.jpg",
+    closeups: ["/please_mockup.jpg", "/please_horizontal.jpg"],
   },
   {
-    id: "kafka-cqrs",
+    id: "hylith-telemedicine",
     index: "03",
-    title: "Kafka CQRS",
-    year: "2025",
-    kind: "NestJS · event architecture",
-    note: "Microservices",
+    title: "Hylith Telemedicine",
+    year: "2026",
+    kind: "Advanced distributed health system",
+    note: "Private SaaS",
     platforms: "Backend",
-    href: "https://github.com/Jotirmoy69/nestjs-kafka-and-cqrs-implementation",
-    color: "#1A2332",
+    locked: true,
+    lockedTitle: "Under wraps",
+    lockedBody:
+      "Shh — this one's secret. Don't tell anyone. Hylith Telemedicine is a private SaaS we're building in-house: a large distributed health platform that isn't open source and isn't public yet. If you need something at this scale, start a project and we'll talk.",
+    color: "#15261F",
     cover:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80",
     closeups: [
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
     ],
   },
   {
-    id: "kong-gateway",
+    id: "bus-sorting",
     index: "04",
-    title: "Kong Gateway",
+    title: "Bus Sorting System",
     year: "2025",
-    kind: "API gateway · load balancing",
-    platforms: "Backend",
-    href: "https://github.com/Jotirmoy69/nestjs-kong-api-gateway-and-load-balancing",
-    color: "#243044",
-    cover:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=900&q=80",
-    closeups: [
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
-    ],
+    kind: "Ops tooling · scheduling",
+    note: "Desktop",
+    platforms: "App",
+    href: "https://github.com/Jotirmoy69/BusSortingSystem",
+    color: "#2A2438",
+    cover: "/busSorting_mockup.jpg",
+    coverMobile: "/busSorting_horizontal.jpg",
+    closeups: ["/busSorting_mockup.jpg", "/busSorting_horizontal.jpg"],
   },
 ];
 

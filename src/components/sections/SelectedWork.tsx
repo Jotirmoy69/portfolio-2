@@ -3,10 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { projects } from "@/content/site";
+import { projects, type Project } from "@/content/site";
 import { MotionEngine } from "@/components/motion/MotionEngine";
 import { useMotion } from "@/components/motion/MotionContext";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { ProjectNotice } from "./ProjectNotice";
 import styles from "./SelectedWork.module.css";
 
 const AUTO_MS = 4200;
@@ -33,6 +34,7 @@ export function SelectedWork() {
   const [active, setActive] = useState(0);
   const [hovering, setHovering] = useState(false);
   const [portalReady, setPortalReady] = useState(false);
+  const [notice, setNotice] = useState<Project | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -213,14 +215,27 @@ export function SelectedWork() {
           {projects.map((project, i) => (
             <a
               key={project.id}
-              href={project.href || "#work"}
-              target={project.href?.startsWith("http") ? "_blank" : undefined}
-              rel={project.href?.startsWith("http") ? "noreferrer" : undefined}
+              href={project.locked ? "#work" : project.href || "#work"}
+              target={
+                !project.locked && project.href?.startsWith("http")
+                  ? "_blank"
+                  : undefined
+              }
+              rel={
+                !project.locked && project.href?.startsWith("http")
+                  ? "noreferrer"
+                  : undefined
+              }
               className={`${styles.item} ${i === active ? styles.itemActive : ""}`}
               onMouseEnter={() => setActive(i)}
               onFocus={() => selectProject(i)}
               onPointerDown={() => selectProject(i)}
-              data-cursor="View"
+              onClick={(e) => {
+                if (!project.locked) return;
+                e.preventDefault();
+                setNotice(project);
+              }}
+              data-cursor={project.locked ? "Private" : "View"}
             >
               <span className={styles.index}>{project.index}</span>
               <span className={styles.itemTitle}>{project.title}</span>
@@ -230,7 +245,9 @@ export function SelectedWork() {
                 {project.note ? (
                   <span className={styles.note}>({project.note})</span>
                 ) : null}
-                <span className={styles.link}>View project →</span>
+                <span className={styles.link}>
+                  {project.locked ? "Under wraps →" : "View project →"}
+                </span>
               </div>
             </a>
           ))}
@@ -264,7 +281,7 @@ export function SelectedWork() {
                     style={{ background: project.color }}
                   >
                     <Image
-                      src={project.cover}
+                      src={project.coverMobile || project.cover}
                       alt=""
                       fill
                       sizes="(max-width: 900px) 90vw, 460px"
@@ -301,6 +318,16 @@ export function SelectedWork() {
       {portalReady && !isTouch && !reducedMotion
         ? createPortal(card, document.body)
         : null}
+
+      <ProjectNotice
+        open={Boolean(notice)}
+        title={notice?.lockedTitle || "Under wraps"}
+        body={
+          notice?.lockedBody ||
+          "This project is private and under construction."
+        }
+        onClose={() => setNotice(null)}
+      />
     </section>
   );
 }

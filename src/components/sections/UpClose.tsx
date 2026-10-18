@@ -31,7 +31,7 @@ export function UpClose() {
         const unique = [...new Set(p.closeups)];
         const suffix = (i: number) => {
           if (unique.length < 2) return "";
-          return i === 0 ? " Mobile" : " Detail";
+          return i === 0 ? " Desktop" : " Mobile";
         };
         return unique.map((src, i) => ({
           src,
