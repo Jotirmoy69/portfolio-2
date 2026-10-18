@@ -16,7 +16,7 @@ Jotirmoy Bhowmik builds software products from the ground up — not just featur
 
 ## Skills
 
-NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.js, SaaS MVPs, system design, API gateways
+NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.js, SaaS MVPs, system design, API gateways, AI product engineering
 
 ## Selected work
 
@@ -24,6 +24,31 @@ NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.
 - Please CLI — AI Git tooling (open source, Hylith Labs)
 - Kafka CQRS — NestJS event architecture
 - Kong Gateway — API gateway & load balancing
+
+## Blog
+
+Index: https://jotirmoy.vercel.app/blog
+
+AI & business:
+
+- https://jotirmoy.vercel.app/blog/how-to-use-ai-agents-to-automate-business-workflows
+- https://jotirmoy.vercel.app/blog/what-it-really-costs-to-build-and-run-an-ai-app
+- https://jotirmoy.vercel.app/blog/build-vs-buy-ai-saas-or-custom-tool
+- https://jotirmoy.vercel.app/blog/how-to-add-ai-to-your-product-without-rebuilding-it
+- https://jotirmoy.vercel.app/blog/rag-vs-fine-tuning-choosing-the-right-ai-approach
+- https://jotirmoy.vercel.app/blog/how-to-protect-company-data-when-employees-use-ai-tools
+- https://jotirmoy.vercel.app/blog/mcp-explained-what-businesses-need-to-know
+- https://jotirmoy.vercel.app/blog/how-to-choose-an-ai-model-for-a-business-use-case
+- https://jotirmoy.vercel.app/blog/how-to-measure-the-roi-of-an-ai-project
+- https://jotirmoy.vercel.app/blog/how-to-reduce-llm-costs-in-production
+- https://jotirmoy.vercel.app/blog/cloud-vs-on-premise-ai-cost-privacy-and-tradeoffs
+- https://jotirmoy.vercel.app/blog/how-to-build-a-secure-ai-proof-of-concept-in-a-week
+
+Product & engineering:
+
+- https://jotirmoy.vercel.app/blog/idea-to-launch
+- https://jotirmoy.vercel.app/blog/nestjs-apis-that-last
+- https://jotirmoy.vercel.app/blog/workflows-to-software
 
 ## Site
 

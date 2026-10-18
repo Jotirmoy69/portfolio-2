@@ -36,7 +36,7 @@ export const site = {
   /** Scroll-lit about — from Jotirmoy’s own copy */
   statement: {
     label: "(Hello)",
-    text: "I'm Jotirmoy, a full-stack developer and co-founder of Hylith. For the past three years, I've been building software from idea to launch — from shaping the product to designing the backend and bringing it to life. I work mainly with NestJS and enjoy solving the problems behind the features. Made in Bangladesh.",
+    text: "I'm Jotirmoy, a full-stack developer and co-founder of Hylith. For the past three years, I've been building software from idea to launch from shaping the product to designing the backend and bringing it to life. I work mainly with NestJS and enjoy solving the problems behind the features. Made in Bangladesh.",
     words: [
       { text: "I'm" },
       { text: "Jotirmoy," },
@@ -60,7 +60,6 @@ export const site = {
       { text: "idea", italic: true },
       { text: "to" },
       { text: "launch", italic: true },
-      { text: "—" },
       { text: "from" },
       { text: "shaping" },
       { text: "the" },

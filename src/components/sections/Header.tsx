@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useRef, type MouseEvent } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/content/site";
 import { MotionEngine } from "@/components/motion/MotionEngine";
 import { useMotion } from "@/components/motion/MotionContext";
@@ -12,6 +14,7 @@ import styles from "./Header.module.css";
 export function Header() {
   const logoRef = useRef<HTMLAnchorElement>(null);
   const clicks = useRef<number[]>([]);
+  const pathname = usePathname();
   const { cycleAccent, ready } = useMotion();
   const { openContact } = useContact();
 
@@ -26,22 +29,25 @@ export function Header() {
   }, [ready]);
 
   const onLogoClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
     const now = Date.now();
     clicks.current = [...clicks.current.filter((t) => now - t < 1200), now];
     if (clicks.current.length >= 5) {
       clicks.current = [];
       cycleAccent();
     }
-    history.pushState(null, "", "#top");
-    smoothScrollTo(0);
+    if (pathname === "/") {
+      e.preventDefault();
+      history.pushState(null, "", "#top");
+      smoothScrollTo(0);
+    }
   };
 
   const onNavClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    e.stopPropagation();
     const href = e.currentTarget.getAttribute("href");
     if (!href || !href.startsWith("#")) return;
+    if (pathname !== "/") return;
+    e.preventDefault();
+    e.stopPropagation();
     history.pushState(null, "", href);
     if (href === "#top") {
       smoothScrollTo(0);
@@ -53,9 +59,9 @@ export function Header() {
 
   return (
     <header className={styles.header}>
-      <a
+      <Link
         ref={logoRef}
-        href="#top"
+        href="/"
         className={styles.logo}
         onClick={onLogoClick}
         data-cursor="Home"
@@ -71,17 +77,33 @@ export function Header() {
         <span className={styles.logoRest} aria-hidden>
           {site.lockup.rest}
         </span>
-      </a>
+      </Link>
       <nav className={styles.nav} aria-label="Main">
-        <a href="#work" data-cursor="Open" onClick={onNavClick}>
+        <a
+          href={pathname === "/" ? "#work" : "/#work"}
+          data-cursor="Open"
+          onClick={onNavClick}
+        >
           <span className={styles.dot} aria-hidden />
           Work
         </a>
-        <a href="#about" data-cursor="Open" onClick={onNavClick}>
+        <a
+          href={pathname === "/" ? "#about" : "/#about"}
+          data-cursor="Open"
+          onClick={onNavClick}
+        >
           <span className={styles.dot} aria-hidden />
           About
         </a>
-        <a href="#services" data-cursor="Open" onClick={onNavClick}>
+        <Link href="/blog" data-cursor="Open">
+          <span className={styles.dot} aria-hidden />
+          Blog
+        </Link>
+        <a
+          href={pathname === "/" ? "#services" : "/#services"}
+          data-cursor="Open"
+          onClick={onNavClick}
+        >
           <span className={styles.dot} aria-hidden />
           Services
         </a>
