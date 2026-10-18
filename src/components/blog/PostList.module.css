@@ -1,0 +1,117 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  grid-template-areas:
+    "num title date"
+    ". desc desc";
+  align-items: baseline;
+  gap: 8px clamp(12px, 2vw, 28px);
+  padding: clamp(20px, 3vw, 32px) 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--fg);
+  transition: color 0.3s, padding 0.5s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .row:hover {
+    color: var(--accent);
+    padding-left: 16px;
+  }
+}
+
+.index {
+  grid-area: num;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.row:hover .index {
+  color: var(--accent);
+}
+
+.title {
+  grid-area: title;
+  font-size: clamp(1.35rem, 3vw, 2.2rem);
+  font-weight: 700;
+  font-variation-settings: "wdth" 72, "wght" 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  min-width: 0;
+}
+
+.date {
+  grid-area: date;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.meta {
+  grid-area: desc;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--fg-muted);
+}
+
+.desc {
+  max-width: 52ch;
+  line-height: 1.45;
+  text-transform: none;
+  letter-spacing: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--fg-muted);
+}
+
+.read {
+  margin-left: auto;
+  color: var(--fg);
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(-8px);
+  transition:
+    opacity 0.45s var(--ease-out) 0.1s,
+    transform 0.55s var(--ease-out) 0.1s,
+    color 0.25s;
+}
+
+.row:hover .read,
+.row:focus-visible .read {
+  opacity: 1;
+  transform: none;
+  color: var(--accent);
+}
+
+@media (max-width: 700px) {
+  .row {
+    grid-template-columns: 36px minmax(0, 1fr);
+    grid-template-areas:
+      "num title"
+      ". date"
+      ". desc";
+  }
+
+  .date {
+    justify-self: start;
+  }
+
+  .read {
+    opacity: 1;
+    transform: none;
+  }
+}

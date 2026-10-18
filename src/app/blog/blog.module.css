@@ -1,0 +1,34 @@
+.page {
+  padding: calc(var(--header-h) + 48px) var(--pad) clamp(80px, 14vh, 140px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.head {
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 70, "wght" 800;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  margin-bottom: 14px;
+}
+
+.lede {
+  color: var(--fg-muted);
+  font-size: 1.05rem;
+  line-height: 1.45;
+  max-width: 36ch;
+}
