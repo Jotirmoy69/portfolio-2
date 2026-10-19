@@ -46,7 +46,11 @@ export const site = {
       { text: "and" },
       { text: "co-founder" },
       { text: "of" },
-      { text: "Hylith." },
+      {
+        text: "Hylith.",
+        href: "https://hylith.com",
+        highlight: true,
+      },
       { text: "For" },
       { text: "the" },
       { text: "past" },

@@ -1,18 +1,27 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/content/site";
 import { MotionEngine } from "@/components/motion/MotionEngine";
 import { useMotion } from "@/components/motion/MotionContext";
+import { Highlighter } from "@/components/ui/highlighter";
 import styles from "./Statement.module.css";
 
 const DIM = 0.14;
+/** Play underline once this word is mostly lit (0→1 scroll reveal) */
+const HIGHLIGHT_AT = 0.72;
 
 export function Statement() {
   const pinRef = useRef<HTMLElement>(null);
   const wordsRef = useRef<HTMLSpanElement[]>([]);
+  const markLit = useRef(false);
   const { reducedMotion, ready } = useMotion();
   const { label, text, words } = site.statement;
+  const highlightIndex = words.findIndex(
+    (w) => "highlight" in w && w.highlight,
+  );
+  const [markActive, setMarkActive] = useState(false);
+  const markOn = reducedMotion || markActive;
 
   useEffect(() => {
     const els = wordsRef.current;
@@ -40,9 +49,16 @@ export function Statement() {
         const opacity = DIM + t * (1 - DIM);
         el.style.opacity = opacity.toFixed(3);
       }
+
+      if (highlightIndex < 0) return;
+      const lit = exact - highlightIndex >= HIGHLIGHT_AT;
+      if (lit !== markLit.current) {
+        markLit.current = lit;
+        setMarkActive(lit);
+      }
     });
     return unsub;
-  }, [ready, reducedMotion, words.length]);
+  }, [ready, reducedMotion, words.length, highlightIndex]);
 
   return (
     <section
@@ -61,6 +77,23 @@ export function Statement() {
           {words.map((word, i) => {
             const italic = "italic" in word && word.italic;
             const accent = "accent" in word && word.accent;
+            const href = "href" in word ? word.href : undefined;
+            const highlight = "highlight" in word && word.highlight;
+
+            const content = href ? (
+              <a
+                href={href}
+                className={styles.link}
+                target="_blank"
+                rel="noreferrer"
+                data-cursor="Open"
+              >
+                {word.text}
+              </a>
+            ) : (
+              word.text
+            );
+
             return (
               <span
                 key={`${word.text}-${i}`}
@@ -74,11 +107,25 @@ export function Statement() {
                 ]
                   .filter(Boolean)
                   .join(" ")}
-                aria-hidden
+                aria-hidden={href ? undefined : true}
                 data-w=""
                 style={{ opacity: reducedMotion ? 1 : DIM }}
               >
-                {word.text}
+                {highlight ? (
+                  <Highlighter
+                    action="underline"
+                    color="#7FA8FF"
+                    active={markOn}
+                    iterations={2}
+                    animationDuration={800}
+                    strokeWidth={2}
+                    padding={2}
+                  >
+                    {content}
+                  </Highlighter>
+                ) : (
+                  content
+                )}
               </span>
             );
           })}
