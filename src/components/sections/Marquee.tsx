@@ -1,21 +1,37 @@
 "use client";
 
 import { site } from "@/content/site";
+import {
+  ScrollVelocityContainer,
+  ScrollVelocityRow,
+} from "@/components/ui/scroll-based-velocity";
 import styles from "./Marquee.module.css";
 
-export function Marquee() {
-  const items = [...site.skills, ...site.skills];
+function SkillStrip() {
+  return (
+    <>
+      {site.skills.map((skill) => (
+        <span key={skill} className={styles.item}>
+          {skill}
+          <span className={styles.diamond} aria-hidden />
+        </span>
+      ))}
+    </>
+  );
+}
 
+export function Marquee() {
   return (
     <div className={styles.wrap} aria-hidden>
-      <div className={styles.track}>
-        {items.map((skill, i) => (
-          <span key={`${skill}-${i}`} className={styles.item}>
-            {skill}
-            <span className={styles.diamond} />
-          </span>
-        ))}
-      </div>
+      <ScrollVelocityContainer className={styles.container}>
+        <ScrollVelocityRow
+          baseVelocity={3}
+          direction={1}
+          className={styles.row}
+        >
+          <SkillStrip />
+        </ScrollVelocityRow>
+      </ScrollVelocityContainer>
     </div>
   );
 }

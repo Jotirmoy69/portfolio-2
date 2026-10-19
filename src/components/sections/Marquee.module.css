@@ -1,13 +1,17 @@
 .wrap {
+  position: relative;
   padding: 18px 0;
   overflow: hidden;
 }
 
-.track {
-  will-change: transform;
-  width: max-content;
+.container {
   display: flex;
-  animation: scroll 36s linear infinite;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  /* ScrollVelocityRow owns overflow */
 }
 
 .item {
@@ -18,7 +22,7 @@
   padding-right: 40px;
   font-size: clamp(36px, 5vw, 72px);
   font-style: italic;
-  display: flex;
+  display: inline-flex;
   color: var(--fg);
 }
 
@@ -31,17 +35,8 @@
   flex-shrink: 0;
 }
 
-@keyframes scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .track {
-    animation: none;
+  .wrap {
+    opacity: 0.9;
   }
 }

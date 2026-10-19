@@ -1,0 +1,24 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+.row {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.track {
+  display: inline-flex;
+  align-items: center;
+  transform: translateZ(0);
+  will-change: transform;
+  user-select: none;
+}
+
+.block {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
