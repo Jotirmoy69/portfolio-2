@@ -1,6 +1,6 @@
-# Jotirmoy Bhowmik — Portfolio
+# Jotirmoy Bhowmik Portfolio
 
-Personal site for **Jotirmoy Bhowmik** — full-stack developer and co-founder of Hylith (Rajshahi, Bangladesh).
+Personal site for **Jotirmoy Bhowmik**, full-stack developer and co-founder of Hylith (Rajshahi, Bangladesh).
 
 **Live:** [jotirmoy.vercel.app](https://jotirmoy.vercel.app)
 
@@ -90,7 +90,7 @@ Technical pieces (you usually don’t touch these when writing a post):
 - UI: `src/components/blog/*` and homepage `src/components/sections/Blog.tsx`
 - SEO: per-post metadata, `BlogPosting` JSON-LD, entries in `sitemap.xml` and `public/llms.txt`
 
-There is **no CMS and no sidebar editor** — the site is static Markdown → Next.js pages. Edit `.md` files, push, Vercel rebuilds the web pages.
+There is **no CMS and no sidebar editor**. The site is static Markdown → Next.js pages. Edit `.md` files, push, Vercel rebuilds the web pages.
 
 ## How to add a new blog post
 
@@ -115,7 +115,7 @@ Use lowercase kebab-case: `how-to-reduce-llm-costs.md` → `/blog/how-to-reduce-
 ```md
 ---
 title: How to Reduce LLM Costs in Production
-description: Practical ways to cut LLM spend—caching, model routing, tighter prompts, and agent limits.
+description: Practical ways to cut LLM spend. Caching, model routing, tighter prompts, and agent limits.
 date: 2026-04-20
 tags:
   - ai
@@ -159,7 +159,7 @@ Vercel builds the new post on deploy. Locally, restart or refresh `npm run dev` 
 
 ### Tips
 
-- Keep descriptions ~140–160 characters for clean search snippets.
+- Keep descriptions ~140 to 160 characters for clean search snippets.
 - Prefer one clear idea per post; use `##` headings for structure.
 - To remove a post, delete its `.md` file and redeploy.
 - Existing examples live in [`content/blog/`](content/blog/).
@@ -175,4 +175,4 @@ Vercel builds the new post on deploy. Locally, restart or refresh `npm run dev` 
 
 ## License
 
-Private portfolio project — all rights reserved unless you add a license later.
+Private portfolio project. All rights reserved unless you add a license later.

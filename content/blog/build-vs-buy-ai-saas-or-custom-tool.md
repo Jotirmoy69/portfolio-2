@@ -1,6 +1,6 @@
 ---
 title: "Build vs. Buy: Should Your Business Use AI SaaS or Build a Custom Tool?"
-description: Build vs buy AI—when off-the-shelf AI SaaS wins, when a custom tool pays off, and how to decide without wasting a quarter.
+description: Build vs buy AI when off-the-shelf AI SaaS wins, when a custom tool pays off, and how to decide without wasting a quarter.
 date: 2026-04-06
 tags:
   - build-vs-buy
@@ -28,7 +28,7 @@ Buying AI SaaS gets you features fast. You pay with **subscription fees, less co
 
 Build (or commission) custom when:
 
-- Your workflow is the product—generics create more clicks, not less  
+- Your workflow is the product. Generics create more clicks, not less  
 - Data cannot leave your stack or region  
 - You need agents tied to **your** CRM, ERP, or internal APIs  
 - Differentiation depends on proprietary process knowledge  
@@ -43,13 +43,13 @@ Ask:
 2. Will we still need this in 24 months?  
 3. Can a SaaS API plug into our systems with acceptable security?  
 4. Do we have (or can we hire) people to maintain a custom system?  
-5. What is the cost of being wrong—lost deals, compliance, or thrash?  
+5. What is the cost of being wrong lost deals, compliance, or thrash?  
 
 If three or more answers push toward ownership, lean custom. Otherwise buy and integrate.
 
 ## Hybrid is often best
 
-Many teams **buy the model layer** (OpenAI, Anthropic, etc.) and **build the product layer**—auth, permissions, RAG over private docs, NestJS APIs, audit logs. You rent intelligence; you own the workflow.
+Many teams **buy the model layer** (OpenAI, Anthropic, etc.) and **build the product layer** auth, permissions, RAG over private docs, NestJS APIs, audit logs. You rent intelligence; you own the workflow.
 
 ## Avoid these traps
 
@@ -60,4 +60,4 @@ Many teams **buy the model layer** (OpenAI, Anthropic, etc.) and **build the pro
 
 ## Recommendation
 
-Start with buy for commodity capabilities. Build custom AI when the workflow, data, or differentiation is yours. Revisit the choice every major release—not once a year in a panic.
+Start with buy for commodity capabilities. Build custom AI when the workflow, data, or differentiation is yours. Revisit the choice every major release, not once a year in a panic.

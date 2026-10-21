@@ -1,6 +1,6 @@
 ---
 title: How to Measure the ROI of an AI Project
-description: Measure AI project ROI with baselines, cost per task, quality metrics, and time-to-value—not vanity demos.
+description: Measure AI project ROI with baselines, cost per task, quality metrics, and time-to-value, not vanity demos.
 date: 2026-03-24
 tags:
   - roi
@@ -9,7 +9,7 @@ tags:
   - leadership
 ---
 
-If you cannot **measure AI project ROI**, you cannot defend the budget—or kill a failing experiment early.
+If you cannot **measure AI project ROI**, you cannot defend the budget, or kill a failing experiment early.
 
 Here is a measurement approach that works for copilots, agents, and internal tools.
 
@@ -81,4 +81,4 @@ A project that “will save millions someday” but never ships has infinite pay
 
 ## Bottom line
 
-Measure the ROI of an AI project with baseline → controlled rollout → value vs full cost → quality gates. If those numbers are missing, you are funding a demo—not a business system.
+Measure the ROI of an AI project with baseline → controlled rollout → value vs full cost → quality gates. If those numbers are missing, you are funding a demo, not a business system.

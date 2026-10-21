@@ -9,7 +9,7 @@ tags:
   - devops
 ---
 
-Production LLM bills surprise teams that only tested in the playground. **Reducing LLM costs in production** is mostly systems work—not begging the model to be shorter.
+Production LLM bills surprise teams that only tested in the playground. **Reducing LLM costs in production** is mostly systems work, not begging the model to be shorter.
 
 ## Find where the money goes
 
@@ -66,4 +66,4 @@ Ask for compact JSON schemas instead of essays when the UI only needs fields.
 
 ## Bottom line
 
-Reduce LLM costs in production by measuring spend per feature, caching, routing to cheaper models, tightening context, and capping agents. Cost control is a product feature—ship it like one.
+Reduce LLM costs in production by measuring spend per feature, caching, routing to cheaper models, tightening context, and capping agents. Cost control is a product feature. Ship it like one.

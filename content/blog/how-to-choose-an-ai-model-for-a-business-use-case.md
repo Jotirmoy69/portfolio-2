@@ -1,6 +1,6 @@
 ---
 title: How to Choose an AI Model for a Business Use Case
-description: Choose an AI model with a clear scorecard—quality, cost, latency, privacy, and evals—matched to your business use case.
+description: Choose an AI model with a clear scorecard quality, cost, latency, privacy, and evals matched to your business use case.
 date: 2026-03-26
 tags:
   - ai-models
@@ -35,7 +35,7 @@ Examples:
 
 ## Build a tiny eval set first
 
-Collect 30–100 real prompts with “good enough” answers. Score models blindly:
+Collect 30 to 100 real prompts with “good enough” answers. Score models blindly:
 
 - Correctness  
 - Hallucination / policy violations  

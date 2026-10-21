@@ -1,6 +1,6 @@
 ---
 title: How to Add AI to Your Product Without Rebuilding It
-description: Add AI to an existing product with thin APIs, RAG, and feature flags—no full rewrite required.
+description: Add AI to an existing product with thin APIs, RAG, and feature flags no full rewrite required.
 date: 2026-04-04
 tags:
   - ai-product
@@ -31,7 +31,7 @@ Draft replies, suggest next fields, summarize threads. Users stay in control. Ri
 
 ### 2. RAG over your docs and tickets
 
-Retrieve company knowledge, then generate. Users get answers grounded in **your** data—not generic internet guesses.
+Retrieve company knowledge, then generate. Users get answers grounded in **your** data, not generic internet guesses.
 
 ### 3. Background enrichment
 
@@ -39,7 +39,7 @@ Classify tickets, tag CRM records, extract fields from uploads. AI runs async vi
 
 ### 4. Tool-using agents (later)
 
-Only after assist + RAG are stable. Agents need permissions, timeouts, and audit logs—or they create incidents.
+Only after assist + RAG are stable. Agents need permissions, timeouts, and audit logs, or they create incidents.
 
 ## Technical checklist
 
@@ -61,4 +61,4 @@ Only after assist + RAG are stable. Agents need permissions, timeouts, and audit
 **Sprint 1:** one assist feature + usage analytics  
 **Sprint 2:** RAG on a narrow doc set + human feedback loop  
 
-Then decide what to automate further. Adding AI without rebuilding means shipping thin slices that prove value—then hardening the backend around what customers actually use.
+Then decide what to automate further. Adding AI without rebuilding means shipping thin slices that prove value, then hardening the backend around what customers actually use.

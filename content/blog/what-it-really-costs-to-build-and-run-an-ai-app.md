@@ -1,6 +1,6 @@
 ---
 title: What It Really Costs to Build and Run an AI App
-description: A practical breakdown of AI app cost—models, infra, data, people, and ongoing LLM spend—so you can budget before you build.
+description: A practical breakdown of AI app cost models, infra, data, people, and ongoing LLM spend so you can budget before you build.
 date: 2026-04-08
 tags:
   - ai-cost
@@ -9,7 +9,7 @@ tags:
   - saas
 ---
 
-Founders ask “how much does an AI app cost?” and expect one number. Real **AI app cost** is a stack: build, run, and improve—each with different drivers.
+Founders ask “how much does an AI app cost?” and expect one number. Real **AI app cost** is a stack: build, run, and improve each with different drivers.
 
 Here is a clear way to budget so you are not surprised in month three.
 
@@ -30,7 +30,7 @@ For a focused MVP, think in **weeks of senior full-stack time**, not “weekend 
 - Vector store setup for RAG  
 - Prompt and policy design  
 
-If employees use AI on private data, security review is part of build cost—not optional polish.
+If employees use AI on private data, security review is part of build cost, not optional polish.
 
 ## Ongoing run costs
 
@@ -59,8 +59,8 @@ Someone must own quality: bad answers, prompt drift, vendor outages. Budget ongo
 
 | Stage | What you pay for | Order of magnitude |
 | --- | --- | --- |
-| Prototype | API keys + days of build | Low hundreds–low thousands USD/mo usage |
-| Soft launch | Stable API + monitoring + light traffic | Thousands in build; hundreds–thousands/mo run |
+| Prototype | API keys + days of build | Low hundreds low thousands USD/mo usage |
+| Soft launch | Stable API + monitoring + light traffic | Thousands in build; hundreds thousands/mo run |
 | Production | Reliability, evals, support, scale | Build in five figures+; run scales with users |
 
 Your market and compliance needs move these numbers a lot. Use them as planning anchors, not quotes.
@@ -75,4 +75,4 @@ Your market and compliance needs move these numbers a lot. Use them as planning 
 
 ## Bottom line
 
-The real cost to build and run an AI app is product engineering + data/security + continuous LLM and infra spend. Price the lifecycle—or the “cheap” prototype becomes the expensive production surprise.
+The real cost to build and run an AI app is product engineering + data/security + continuous LLM and infra spend. Price the lifecycle, or the “cheap” prototype becomes the expensive production surprise.

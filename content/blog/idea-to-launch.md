@@ -1,6 +1,6 @@
 ---
 title: From idea to launch
-description: How I take a product from a rough idea to something people can actually use — without drowning in process.
+description: How I take a product from a rough idea to something people can actually use, without drowning in process.
 date: 2026-03-12
 tags:
   - product
@@ -10,7 +10,7 @@ tags:
 
 Most products do not fail because of missing technology. They fail because the path from idea to something useful gets fuzzy.
 
-I start by finding the smallest version that still solves a real workflow. Not a feature list — a moment where someone stops doing something manually and starts trusting the software instead.
+I start by finding the smallest version that still solves a real workflow. Not a feature list, a moment where someone stops doing something manually and starts trusting the software instead.
 
 ## Shape the product first
 
@@ -30,4 +30,4 @@ For me that usually means TypeScript, NestJS, clear HTTP surfaces, and only as m
 
 ## Bring it to life
 
-Launch is not a ceremony. It is the first time a real user runs the real flow. From there you learn, trim, and grow — software built to grow with the business, not a demo that dies after the pitch.
+Launch is not a ceremony. It is the first time a real user runs the real flow. From there you learn, trim, and grow. Software built to grow with the business, not a demo that dies after the pitch.

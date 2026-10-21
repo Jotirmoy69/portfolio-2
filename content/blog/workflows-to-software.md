@@ -1,6 +1,6 @@
 ---
 title: Turning workflows into software
-description: Why I build for businesses that have outgrown spreadsheets — and how distributed systems fit when the workflow gets real.
+description: Why I build for businesses that have outgrown spreadsheets, and how distributed systems fit when the workflow gets real.
 date: 2026-01-20
 tags:
   - workflows
@@ -10,7 +10,7 @@ tags:
 
 I build full-stack products for teams whose day-to-day has become too complex to manage manually.
 
-Dashboards, web apps, backend APIs, SaaS MVPs, automation, commerce flows — the labels change. The pattern does not: a human process is slowing the business down, and software should take the load without becoming another mess.
+Dashboards, web apps, backend APIs, SaaS MVPs, automation, commerce flows, the labels change. The pattern does not: a human process is slowing the business down, and software should take the load without becoming another mess.
 
 ## Understand the workflow
 
@@ -20,7 +20,7 @@ Only then do I choose the stack.
 
 ## Replace, do not decorate
 
-A pretty UI on top of a broken process is still a broken process. The win is when the software *is* the workflow — notifications, permissions, history, and the backend rules that keep it honest.
+A pretty UI on top of a broken process is still a broken process. The win is when the software *is* the workflow, notifications, permissions, history, and the backend rules that keep it honest.
 
 ## Distributed when it earns its keep
 

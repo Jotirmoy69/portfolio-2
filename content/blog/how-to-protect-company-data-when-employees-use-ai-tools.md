@@ -1,6 +1,6 @@
 ---
 title: How to Protect Company Data When Employees Use AI Tools
-description: Protect company data with AI usage policies, approved tools, DLP, and private RAG—so productivity does not become a leak.
+description: Protect company data with AI usage policies, approved tools, DLP, and private RAG so productivity does not become a leak.
 date: 2026-03-30
 tags:
   - data-security
@@ -9,7 +9,7 @@ tags:
   - privacy
 ---
 
-Employees will use AI tools—with or without IT. The question is whether **company data** stays protected while they do it.
+Employees will use AI tools with or without IT. The question is whether **company data** stays protected while they do it.
 
 Here is a practical playbook for protecting data when teams use ChatGPT-class tools, copilots, and internal agents.
 
@@ -45,11 +45,11 @@ When data cannot leave your boundary:
 
 - Self-host or use enterprise tiers with contractual data controls  
 - Put retrieval behind your auth (per-user document ACL)  
-- Keep the system of record in your database—not in the model  
+- Keep the system of record in your database, not in the model  
 
 ## Culture beats sticky notes
 
-Train managers on examples (“this CRM export is not for ChatGPT”). Celebrate safe automation. Make the approved path **easier** than the risky one—internal search that actually works beats policy lectures.
+Train managers on examples (“this CRM export is not for ChatGPT”). Celebrate safe automation. Make the approved path **easier** than the risky one. Internal search that actually works beats policy lectures.
 
 ## Quick start checklist
 
