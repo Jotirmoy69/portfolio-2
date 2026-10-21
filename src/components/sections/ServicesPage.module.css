@@ -1,0 +1,240 @@
+/* Mike Wilcock /services index, matched structure + CSS */
+
+.page {
+  padding: 0 0 60px;
+}
+
+.titleSection {
+  padding: calc(var(--header-h) + 40px) var(--pad) 0;
+}
+
+.title {
+  margin: 0 0 24px;
+  padding: 0.04em 0;
+  font-size: clamp(64px, 13vw, 220px);
+  font-weight: 800;
+  font-variation-settings: "wdth" 70, "wght" 800;
+  letter-spacing: -0.01em;
+  line-height: 0.86;
+  text-transform: uppercase;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.intro {
+  max-width: 40ch;
+  color: var(--fg-muted);
+  text-wrap: pretty;
+  margin: 0 0 clamp(56px, 10vh, 120px);
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.4;
+}
+
+.list {
+  padding-inline: var(--pad);
+}
+
+.rows {
+  border-top: 1px solid var(--border);
+}
+
+.row {
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 24px 48px;
+  padding: clamp(32px, 5vw, 56px) 0;
+  transition: padding 0.7s var(--ease-out), color 0.3s;
+}
+
+@media (hover: hover) {
+  .row:hover {
+    color: var(--accent);
+    padding-left: 20px;
+  }
+}
+
+.row:active {
+  color: var(--accent);
+}
+
+.heading {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.number {
+  font-family: var(--font-mono);
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.rowTitle {
+  letter-spacing: -0.02em;
+  font-variation-settings: "wdth" 85, "wght" 700;
+  font-size: clamp(36px, 4.4vw, 68px);
+  line-height: 0.95;
+  font-weight: 700;
+}
+
+.description {
+  color: var(--fg-muted);
+  text-wrap: pretty;
+  max-width: 40ch;
+  margin: 0;
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-content: flex-start;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  font-size: 14px;
+  color: inherit;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  font-size: 12px;
+  margin-bottom: 32px;
+}
+
+.steps {
+  padding-inline: var(--pad);
+  margin-top: clamp(80px, 14vh, 160px);
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px);
+}
+
+.step {
+  border-top: 2px solid var(--accent);
+  padding-top: 20px;
+}
+
+.stepTitle {
+  letter-spacing: -0.01em;
+  font-variation-settings: "wdth" 88, "wght" 700;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.stepBody {
+  color: var(--fg-muted);
+  text-wrap: pretty;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.plans {
+  padding: 0 var(--pad);
+  margin-top: clamp(80px, 14vh, 160px);
+}
+
+.plansGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.planCard {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  border-radius: 12px;
+  background: var(--surface);
+  min-height: 260px;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 28px;
+  transition: background 0.4s, color 0.4s, transform 0.6s var(--ease-out);
+}
+
+@media (hover: hover) {
+  .planCard:hover {
+    background: var(--accent);
+    color: var(--accent-ink);
+    transform: translateY(-6px);
+  }
+}
+
+.planCard:active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.planTitle {
+  letter-spacing: -0.01em;
+  font-variation-settings: "wdth" 88, "wght" 700;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.planBody {
+  opacity: 0.8;
+  text-wrap: pretty;
+  flex: 1 1 0%;
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.planPrice {
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+  .stepsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .plansGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .title {
+    font-size: 21vw;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 600px) {
+  .stepsGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,275 @@
+/* Mike Wilcock /work index, matched structure + CSS */
+
+.page {
+  padding: calc(var(--header-h) + 40px) var(--pad) 80px;
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 56px;
+}
+
+.title {
+  margin: 0;
+  padding: 0.04em 0;
+  font-size: clamp(80px, 16vw, 260px);
+  font-weight: 800;
+  font-variation-settings: "wdth" 70, "wght" 800;
+  letter-spacing: -0.04em;
+  line-height: 0.86;
+  text-transform: uppercase;
+  color: var(--fg);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.titleKinetic {
+  display: inline !important;
+}
+
+.titleKinetic > span {
+  display: inline;
+}
+
+.count {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: inherit;
+  color: var(--accent);
+  vertical-align: top;
+  margin-left: 8px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: uppercase;
+}
+
+.toggle {
+  display: flex;
+  gap: 6px;
+  padding: 5px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.viewBtn {
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg);
+  padding: 9px 16px;
+  border-radius: 100px;
+  background: transparent;
+  border: 0;
+  transition: color 0.25s;
+}
+
+.viewLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  background: var(--fg);
+  z-index: 0;
+}
+
+.viewBtnActive {
+  color: var(--bg);
+}
+
+.viewBtnStatic.viewBtnActive {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.stage {
+  position: relative;
+}
+
+.list {
+  display: block;
+}
+
+.cols,
+.row {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) minmax(0, 0.5fr) minmax(0, 0.5fr) 60px;
+  gap: 20px;
+}
+
+.cols {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding-bottom: 14px;
+}
+
+.yearHead {
+  text-align: right;
+}
+
+.row {
+  align-items: center;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  color: var(--fg);
+  cursor: pointer;
+  transition: padding 0.6s var(--ease-out), color 0.3s;
+}
+
+@media (hover: hover) {
+  .row:hover {
+    color: var(--accent);
+    padding-left: 20px;
+  }
+}
+
+.row:active {
+  color: var(--accent);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-muted);
+}
+
+.name {
+  font-size: clamp(28px, 4.4vw, 64px);
+  font-weight: 700;
+  font-variation-settings: "wdth" 88, "wght" 700;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+}
+
+.detail {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.year {
+  text-align: right;
+}
+
+.end {
+  border-top: 1px solid var(--border);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 40px) clamp(20px, 2vw, 28px);
+}
+
+.card {
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.cardMedia {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.cardLayer {
+  position: absolute;
+  inset: 0;
+  transition: transform 1.2s var(--ease-out);
+}
+
+.cardLayer img {
+  object-fit: cover;
+  border-radius: 0 !important;
+  filter: none !important;
+}
+
+@media (hover: hover) {
+  .card:hover .cardLayer {
+    transform: scale(1.08);
+  }
+}
+
+.cardMeta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cardName {
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 700;
+  font-variation-settings: "wdth" 88, "wght" 700;
+  letter-spacing: -0.02em;
+}
+
+.cardYear {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--fg-muted);
+  flex-shrink: 0;
+}
+
+.cardKind {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+  .title {
+    font-size: 30vw;
+  }
+
+  .count {
+    margin-left: 4px;
+    font-size: 11px;
+  }
+
+  .cols,
+  .row {
+    grid-template-columns: 28px minmax(0, 1fr) auto;
+    gap: 14px;
+  }
+
+  .cols > :nth-child(3),
+  .cols > :nth-child(4),
+  .row > :nth-child(3),
+  .row > :nth-child(4) {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

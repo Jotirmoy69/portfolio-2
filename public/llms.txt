@@ -4,7 +4,7 @@
 
 ## Summary
 
-Jotirmoy Bhowmik builds software products from the ground up — not just features, the full thing: idea, architecture and launch. His work covers SaaS, web applications, backend APIs, microservices and automation for online businesses that have outgrown manual workflows. Deep backend craft in NestJS, TypeScript, Kafka and CQRS when systems need to scale; product-minded end-to-end when a business needs something that ships.
+Jotirmoy Bhowmik builds software products from the ground up, not just features, the full thing: idea, architecture and launch. His work covers SaaS, web applications, backend APIs, microservices and automation for online businesses that have outgrown manual workflows. Deep backend craft in NestJS, TypeScript, Kafka and CQRS when systems need to scale; product-minded end-to-end when a business needs something that ships.
 
 ## Contact
 
@@ -18,12 +18,20 @@ Jotirmoy Bhowmik builds software products from the ground up — not just featur
 
 NestJS, TypeScript, Node.js, REST APIs, microservices, Apache Kafka, CQRS, Next.js, SaaS MVPs, system design, API gateways, AI product engineering
 
+## Pages
+
+- Home: https://jotirmoy.is-a.dev/
+- Work: https://jotirmoy.is-a.dev/work
+- About: https://jotirmoy.is-a.dev/about
+- Services: https://jotirmoy.is-a.dev/services
+- Blog: https://jotirmoy.is-a.dev/blog
+
 ## Selected work
 
-- Hylith — SaaS & product systems (full-stack)
-- Please CLI — AI Git tooling (open source, Hylith Labs)
-- Kafka CQRS — NestJS event architecture
-- Kong Gateway — API gateway & load balancing
+- Hylith, SaaS & product systems (full-stack)
+- Please CLI, AI Git tooling (open source, Hylith Labs)
+- Kafka CQRS, NestJS event architecture
+- Kong Gateway, API gateway & load balancing
 
 ## Blog
 
