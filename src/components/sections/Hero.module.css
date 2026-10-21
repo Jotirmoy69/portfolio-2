@@ -51,7 +51,7 @@
   font-weight: 850;
   font-variation-settings: "wdth" 70, "wght" 850;
   line-height: 0.86;
-  /* Match MW: min(19vw, ~53cqh) — fills the name block */
+  /* Match MW: min(19vw, ~53cqh), fills the name block */
   font-size: min(11.5vw, 42cqh);
   overflow: hidden;
 }
@@ -62,7 +62,7 @@
   overflow: hidden;
 }
 
-/* KineticText: sr-only + two lines — second line right-aligned like MW */
+/* KineticText: sr-only + two lines, second line right-aligned like MW */
 .title > span[aria-hidden]:nth-of-type(3) {
   text-align: right;
 }

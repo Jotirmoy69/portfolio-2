@@ -27,8 +27,8 @@ interface HighlighterProps {
   /** When true, draw only after the element scrolls into view */
   isView?: boolean;
   /**
-   * Explicit play trigger. When set, overrides isView —
-   * show when true, animate-hide when false.
+   * Explicit play trigger. When set, overrides isView.
+   * Show when true, animate-hide when false.
    */
   active?: boolean;
   className?: string;
@@ -101,7 +101,7 @@ export function Highlighter({
       annotationRef.current = null;
       shownRef.current = false;
     };
-    // shouldShow handled in the effect below — omit from deps so we don't remount on toggle
+    // shouldShow handled in the effect below, omit from deps so we don't remount on toggle
     // eslint-disable-next-line react-hooks/exhaustive-deps -- create once per style config
   }, [
     action,

@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
       {
-        // Common AI / answer-engine crawlers — allow for citation
+        // Common AI / answer-engine crawlers, allow for citation
         userAgent: [
           "GPTBot",
           "ChatGPT-User",

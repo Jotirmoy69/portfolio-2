@@ -86,7 +86,7 @@ img {
   height: auto;
 }
 
-/* Apple squircle — Skiper UI skiper63 (https://skiper-ui.com/v1/skiper63) */
+/* Apple squircle, Skiper UI skiper63 (https://skiper-ui.com/v1/skiper63) */
 .squircle {
   border-radius: 22px;
   filter: url(#SkiperSquiCircleFilterLayout);

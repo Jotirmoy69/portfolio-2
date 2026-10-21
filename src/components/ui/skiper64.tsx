@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Gooey SVG filter — from Skiper UI skiper64
+ * Gooey SVG filter, from Skiper UI skiper64
  * https://skiper-ui.com/v1/skiper64
  *
  * Mount once, then apply: style={{ filter: "url(#SkiperGooeyFilter)" }}

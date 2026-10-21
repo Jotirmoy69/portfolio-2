@@ -115,7 +115,7 @@ export function ContactModal() {
           Let’s talk
         </h2>
         <p className={styles.sub}>
-          Pick a channel — I’ll get back as soon as I can.
+          Pick a channel. I’ll get back as soon as I can.
         </p>
 
         <ul className={styles.list}>

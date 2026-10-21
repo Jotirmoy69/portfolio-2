@@ -8,9 +8,9 @@ export const seo = {
     default: `${site.name} | Full-stack Developer & Founder-Minded Builder`,
     template: `%s | ${site.name}`,
   },
-  /** Primary SERP + AI snippet — answers who / what / where */
+  /** Primary SERP + AI snippet, answers who / what / where */
   description:
-    "Jotirmoy Bhowmik is a full-stack developer and founder-minded builder in Rajshahi, Bangladesh. He builds software products from the ground up — SaaS, web apps, NestJS APIs, Kafka microservices and systems for real businesses. Founder at Hylith.",
+    "Jotirmoy Bhowmik is a full-stack developer and founder-minded builder in Rajshahi, Bangladesh. He builds software products from the ground up, SaaS, web apps, NestJS APIs, Kafka microservices and systems for real businesses. Founder at Hylith.",
   /**
    * Search + AI intent keywords (used in meta + structured copy, not stuffed in body).
    * Sourced from common queries around NestJS / backend hire / BD talent.
@@ -37,7 +37,7 @@ export const seo = {
     "scalable APIs",
     "event-driven architecture",
   ],
-  ogAlt: `${site.name} — full-stack developer & founder-minded builder, ${site.location}`,
+  ogAlt: `${site.name}, full-stack developer & founder-minded builder, ${site.location}`,
   locale: "en_US",
 } as const;
 
@@ -91,7 +91,7 @@ export function buildJsonLd() {
       {
         "@type": "ProfessionalService",
         "@id": `${siteUrl}/#services`,
-        name: `${site.name} — Backend & API engineering`,
+        name: `${site.name}, Backend & API engineering`,
         url: siteUrl,
         description:
           "Backend systems, APIs and gateways, microservices with Kafka/CQRS, and full-stack product builds with Next.js.",

@@ -56,7 +56,7 @@ export function Services() {
         <h2 id="services-title" className={styles.title}>
           What I do
         </h2>
-        <a href="#contact" className={styles.all} data-cursor="Open">
+        <a href="/services" className={styles.all} data-cursor="Open">
           All services →
         </a>
       </div>

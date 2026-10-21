@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Apple squircle SVG filter — from Skiper UI skiper63
+ * Apple squircle SVG filter, from Skiper UI skiper63
  * https://skiper-ui.com/v1/skiper63
  *
  * Mount once (e.g. in Providers), then apply:

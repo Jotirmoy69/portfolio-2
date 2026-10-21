@@ -15,7 +15,7 @@ export function LenisProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    // Wheel/trackpad: short lerp only — NOT the long Apple click animation
+    // Wheel/trackpad: short lerp only, NOT the long Apple click animation
     const lenis = new Lenis({
       lerp: 0.12,
       smoothWheel: true,

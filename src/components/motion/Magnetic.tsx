@@ -25,7 +25,7 @@ function lerpFactor(factor: number, dt: number) {
   return 1 - Math.pow(1 - factor, Math.max(0, dt) * 60);
 }
 
-/** MW-style magnetic pull — element eases toward the cursor nearby. */
+/** MW-style magnetic pull, element eases toward the cursor nearby. */
 export function Magnetic({
   children,
   className,

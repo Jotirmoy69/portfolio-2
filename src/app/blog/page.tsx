@@ -6,7 +6,7 @@ import styles from "./blog.module.css";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: `Notes on building full-stack products, NestJS APIs, and systems — by ${site.name}.`,
+  description: `Notes on building full-stack products, NestJS APIs, and systems, by ${site.name}.`,
   alternates: { canonical: "/blog" },
 };
 

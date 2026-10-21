@@ -105,6 +105,14 @@
   }
 }
 
+.nav a[aria-current="page"] {
+  opacity: 1;
+}
+
+.nav a[aria-current="page"] .dot {
+  display: block;
+}
+
 .nav a:active {
   opacity: 1;
   color: var(--accent);

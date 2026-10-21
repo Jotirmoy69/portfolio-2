@@ -58,30 +58,16 @@ export function Header() {
     }
   };
 
-  const onNavClick = (e: MouseEvent<HTMLAnchorElement>) => {
-    const href = e.currentTarget.getAttribute("href");
-    setMenuOpen(false);
-    if (!href || !href.startsWith("#")) return;
-    if (pathname !== "/") return;
-    e.preventDefault();
-    e.stopPropagation();
-    history.pushState(null, "", href);
-    if (href === "#top") {
-      smoothScrollTo(0);
-      return;
-    }
-    const target = document.querySelector(href);
-    if (target) smoothScrollTo(target);
-  };
-
   const openProject = () => {
     setMenuOpen(false);
     openContact();
   };
 
-  const workHref = pathname === "/" ? "#work" : "/#work";
-  const aboutHref = pathname === "/" ? "#about" : "/#about";
-  const servicesHref = pathname === "/" ? "#services" : "/#services";
+  const workActive = pathname === "/work" || pathname.startsWith("/work/");
+  const aboutActive = pathname === "/about" || pathname.startsWith("/about/");
+  const blogActive = pathname === "/blog" || pathname.startsWith("/blog/");
+  const servicesActive =
+    pathname === "/services" || pathname.startsWith("/services/");
 
   return (
     <header className={`${styles.header} ${menuOpen ? styles.headerOpen : ""}`}>
@@ -106,22 +92,42 @@ export function Header() {
       </Link>
 
       <nav className={styles.nav} aria-label="Main">
-        <a href={workHref} data-cursor="Open" onClick={onNavClick}>
+        <Link
+          href="/work"
+          data-cursor="Open"
+          aria-current={workActive ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           <span className={styles.dot} aria-hidden />
           Work
-        </a>
-        <a href={aboutHref} data-cursor="Open" onClick={onNavClick}>
+        </Link>
+        <Link
+          href="/about"
+          data-cursor="Open"
+          aria-current={aboutActive ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           <span className={styles.dot} aria-hidden />
           About
-        </a>
-        <Link href="/blog" data-cursor="Open">
+        </Link>
+        <Link
+          href="/blog"
+          data-cursor="Open"
+          aria-current={blogActive ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           <span className={styles.dot} aria-hidden />
           Blog
         </Link>
-        <a href={servicesHref} data-cursor="Open" onClick={onNavClick}>
+        <Link
+          href="/services"
+          data-cursor="Open"
+          aria-current={servicesActive ? "page" : undefined}
+          onClick={() => setMenuOpen(false)}
+        >
           <span className={styles.dot} aria-hidden />
           Services
-        </a>
+        </Link>
         <button
           type="button"
           className={styles.cta}
@@ -162,18 +168,34 @@ export function Header() {
           >
             Close
           </button>
-          <a href={workHref} onClick={onNavClick}>
+          <Link
+            href="/work"
+            aria-current={workActive ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
             Work
-          </a>
-          <a href={aboutHref} onClick={onNavClick}>
+          </Link>
+          <Link
+            href="/about"
+            aria-current={aboutActive ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
             About
-          </a>
-          <Link href="/blog" onClick={() => setMenuOpen(false)}>
+          </Link>
+          <Link
+            href="/blog"
+            aria-current={blogActive ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
             Blog
           </Link>
-          <a href={servicesHref} onClick={onNavClick}>
+          <Link
+            href="/services"
+            aria-current={servicesActive ? "page" : undefined}
+            onClick={() => setMenuOpen(false)}
+          >
             Services
-          </a>
+          </Link>
           <button type="button" className={styles.sheetCta} onClick={openProject}>
             Start a project
           </button>

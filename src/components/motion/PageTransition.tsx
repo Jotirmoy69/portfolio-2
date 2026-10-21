@@ -30,14 +30,26 @@ function resolvePath(href: string) {
   }
 }
 
+function labelForPath(path: string) {
+  const clean = path.replace(/\/$/, "") || "/";
+  if (clean === "/") return "Home";
+  if (clean === "/work" || clean.startsWith("/work/")) return "Work";
+  if (clean === "/about") return "About";
+  if (clean === "/services" || clean.startsWith("/services/")) return "Services";
+  if (clean === "/blog" || clean.startsWith("/blog/")) return "Blog";
+  const segment = clean.split("/").filter(Boolean).pop() || "Next";
+  return segment.replace(/-/g, " ");
+}
+
 /**
- * SmoothUI-style stairs transition on client-side route changes.
- * Close stairs → navigate → open stairs when the new route is active.
+ * MW-style page cover on client-side route changes.
+ * Close (accent bars + title) → navigate → open (bars exit up).
  */
 export function PageTransition() {
   const router = useRouter();
   const pathname = usePathname();
   const [phase, setPhase] = useState<"idle" | "closing" | "opening">("idle");
+  const [label, setLabel] = useState("Next");
   const pendingHref = useRef<string | null>(null);
   const waitingForPath = useRef<string | null>(null);
   const pathAtClose = useRef<string | null>(null);
@@ -62,7 +74,6 @@ export function PageTransition() {
     waitingForPath.current = nextPath;
     pathAtClose.current = pathname;
 
-    // Soft navigate; if already there, open immediately
     if (nextPath === pathname || nextPath === `${pathname}/`) {
       waitingForPath.current = null;
       setPhase("opening");
@@ -71,7 +82,6 @@ export function PageTransition() {
 
     router.push(href);
 
-    // Safety: open even if pathname listener misses
     clearFallback();
     fallbackTimer.current = setTimeout(() => {
       if (waitingForPath.current) {
@@ -86,7 +96,6 @@ export function PageTransition() {
     setPhase("idle");
   }, []);
 
-  // When the route finishes changing after a closed transition, open stairs
   useEffect(() => {
     if (!waitingForPath.current) return;
     const target = waitingForPath.current.replace(/\/$/, "") || "/";
@@ -97,7 +106,6 @@ export function PageTransition() {
     }
   }, [pathname]);
 
-  // Intercept internal link clicks (Next <Link> renders <a>)
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
       if (e.defaultPrevented) return;
@@ -120,13 +128,13 @@ export function PageTransition() {
       const nextPath = (next.split("#")[0] || next).replace(/\/$/, "") || "/";
       const current = pathname.replace(/\/$/, "") || "/";
 
-      // Same-page hash scroll — leave alone
       if (next.includes("#") && nextPath === current) return;
       if (nextPath === current && !next.includes("?")) return;
 
       e.preventDefault();
       e.stopPropagation();
       pendingHref.current = href;
+      setLabel(labelForPath(nextPath));
       setPhase("closing");
     };
 
@@ -139,6 +147,7 @@ export function PageTransition() {
   return (
     <StairsTransition
       phase={phase}
+      label={label}
       onCloseComplete={onCloseComplete}
       onOpenComplete={onOpenComplete}
     />

@@ -23,7 +23,7 @@ function lerpFactor(base: number, dt: number) {
 }
 
 /**
- * Selected work — mirrors mikewilcockdesign.com:
+ * Selected work, mirrors mikewilcockdesign.com:
  * - Floating card rests ON the right frame (scaled to fit) → image appears in-frame
  * - On row hover: card lifts toward the cursor (offset +190) with lean; cursor → View
  * - On leave: card eases back into the frame
@@ -202,7 +202,7 @@ export function SelectedWork() {
           >
             ({motionPaused ? "Play motion" : "Pause motion"})
           </button>
-          <span className="mono">2024 — Present</span>
+          <span className="mono">2024 to present</span>
         </div>
       </div>
 

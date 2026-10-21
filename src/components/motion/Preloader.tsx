@@ -14,7 +14,7 @@ let introLock = false;
 
 /**
  * Survives client-side route changes (layout stays mounted) but resets on
- * full document reload — so soft navigations skip the intro.
+ * full document reload, so soft navigations skip the intro.
  */
 let introPlayedThisDocument = false;
 
@@ -130,7 +130,7 @@ export function Preloader() {
 
     const letters = [...root.querySelectorAll<HTMLElement>("[data-il]")];
 
-    // —— Phase 1: letters rise + box pop + meta ——
+    //  Phase 1: letters rise + box pop + meta 
     letters.forEach((letter, i) => {
       const finalFvs =
         letter.dataset.il === "italic"
@@ -178,7 +178,7 @@ export function Preloader() {
       getRate,
     );
 
-    // —— Phase 2: counter + line (~1120ms clock) ——
+    //  Phase 2: counter + line (~1120ms clock) 
     let elapsed = 0;
     let last = performance.now();
 
@@ -323,7 +323,7 @@ export function Preloader() {
     };
     rafId = requestAnimationFrame(tick);
 
-    // Intentionally no cancel on cleanup — Strict Mode would kill the intro mid-flight.
+    // Intentionally no cancel on cleanup, Strict Mode would kill the intro mid-flight.
     // finishIntro() releases introLock when the sequence completes.
     return () => {
       void rafId;

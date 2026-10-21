@@ -13,7 +13,7 @@ type ScrollProgressProps = {
 };
 
 /**
- * Magic UI Scroll Progress — https://magicui.design/docs/components/scroll-progress
+ * Magic UI Scroll Progress, https://magicui.design/docs/components/scroll-progress
  * Adapted for CSS modules (no Tailwind). scaleX follows scroll; reverses on scroll up.
  */
 export function ScrollProgress({

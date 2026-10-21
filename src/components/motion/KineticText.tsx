@@ -21,7 +21,7 @@ type Props = {
   settleDuration?: number;
 };
 
-/** Exponential ease — most of the ease-back plays out over `duration` seconds */
+/** Exponential ease, most of the ease-back plays out over `duration` seconds */
 function settleFactor(duration: number, dt: number) {
   const tau = Math.max(0.05, duration);
   return 1 - Math.exp(-Math.max(0, dt) / tau);

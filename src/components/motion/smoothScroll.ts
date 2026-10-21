@@ -1,7 +1,7 @@
 import type Lenis from "lenis";
 
 /**
- * Apple-like ease — smooth acceleration then soft landing.
+ * Apple-like ease, smooth acceleration then soft landing.
  * (Avoid expo-out: it covers ~90% of distance instantly and feels like a jump.)
  */
 export function appleEase(t: number) {
@@ -49,7 +49,7 @@ export function smoothScrollTo(
 
   if (lenis) {
     lenis.start();
-    // Apple ease only for click-to-section — wheel uses Lenis lerp separately
+    // Apple ease only for click-to-section, wheel uses Lenis lerp separately
     lenis.scrollTo(top, {
       duration: options?.duration ?? APPLE_SCROLL.duration,
       easing: APPLE_SCROLL.easing,

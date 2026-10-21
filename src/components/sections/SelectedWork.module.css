@@ -294,7 +294,7 @@
   will-change: transform;
 }
 
-/* MW floating card — rests on frame, lifts toward cursor on hover */
+/* MW floating card, rests on frame, lifts toward cursor on hover */
 .hoverCard {
   position: fixed;
   top: 0;
