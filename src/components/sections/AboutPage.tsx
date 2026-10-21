@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { site } from "@/content/site";
+import { identityFaqs } from "@/content/seo";
 import { KineticText } from "@/components/motion/KineticText";
 import { Highlighter } from "@/components/ui/highlighter";
 import styles from "./AboutPage.module.css";
@@ -11,8 +12,8 @@ export function AboutPageView() {
 
   const lead = (
     <>
-      Hi, I&apos;m Jotirmoy. I&apos;m a full-stack developer and founder-minded
-      builder based in Rajshahi, Bangladesh, co-founder of{" "}
+      Hi, I&apos;m Jotirmoy Bhowmik. I&apos;m a full-stack developer and
+      founder-minded builder based in Rajshahi, Bangladesh, co-founder of{" "}
       <Highlighter
         action="underline"
         color="#7FA8FF"
@@ -87,6 +88,20 @@ export function AboutPageView() {
             </section>
           </div>
         </div>
+      </section>
+
+      <section className={styles.faq} aria-labelledby="faq-title">
+        <h2 id="faq-title" className={styles.faqTitle}>
+          Quick answers
+        </h2>
+        <dl className={styles.faqList}>
+          {identityFaqs.map((item) => (
+            <div key={item.question} className={styles.faqItem}>
+              <dt className={styles.faqQ}>{item.question}</dt>
+              <dd className={styles.faqA}>{item.answer}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
     </article>
   );

@@ -39,7 +39,7 @@ export const site = {
     image: "/about.jpg",
     imageAlt:
       "Jotirmoy Bhowmik, full-stack developer and co-founder of Hylith",
-    lead: "Hi, I'm Jotirmoy. I'm a full-stack developer and founder-minded builder based in Rajshahi, Bangladesh.",
+    lead: "Hi, I'm Jotirmoy Bhowmik. I'm a full-stack developer and founder-minded builder based in Rajshahi, Bangladesh.",
     paragraphs: [
       "I build software products from the ground up, not just features, the full thing. Idea, architecture and launch. SaaS, web apps, backend APIs and systems for online businesses that have outgrown manual workflows.",
       "I'm co-founder at Hylith, where we plan and build custom software: SaaS, MVPs, backends and APIs. I also work as a web developer at Branta Tech, shipping real products for brands and teams from Bogura / Rajshahi.",
