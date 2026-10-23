@@ -97,9 +97,10 @@ img:not([data-no-squircle]) {
   filter: url(#SkiperSquiCircleFilterLayout);
 }
 
+/* Soft tint; rough-notation underline is the main selection mark */
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
+  color: var(--fg);
 }
 
 .sr-only {

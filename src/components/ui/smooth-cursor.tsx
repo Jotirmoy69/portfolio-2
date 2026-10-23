@@ -16,6 +16,8 @@ interface Position {
 
 export interface SmoothCursorProps {
   cursor?: ReactNode;
+  /** Spring the arrow upright while still using the same pointer glyph */
+  straight?: boolean;
   springConfig?: {
     damping: number;
     stiffness: number;
@@ -24,10 +26,20 @@ export interface SmoothCursorProps {
   };
 }
 
-const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)"
+const DESKTOP_POINTER_QUERY = "(any-hover: hover) and (any-pointer: fine)";
 
 function isTrackablePointer(pointerType: string) {
-  return pointerType !== "touch"
+  return pointerType !== "touch";
+}
+
+/** Locked text-mode lean: 40° toward the left (counter-clockwise). */
+const TEXT_LOCK_ANGLE = -40;
+
+/** Shortest turn from current accumulated degrees toward the text lock angle. */
+function textLockTarget(current: number) {
+  const mod = ((current - TEXT_LOCK_ANGLE) % 360 + 360) % 360;
+  const shortest = mod > 180 ? mod - 360 : mod;
+  return current - shortest;
 }
 
 const DefaultCursorSVG: FC = () => {
@@ -89,11 +101,12 @@ const DefaultCursorSVG: FC = () => {
         </filter>
       </defs>
     </svg>
-  )
-}
+  );
+};
 
 export function SmoothCursor({
   cursor = <DefaultCursorSVG />,
+  straight = false,
   springConfig = {
     damping: 45,
     stiffness: 400,
@@ -101,128 +114,161 @@ export function SmoothCursor({
     restDelta: 0.001,
   },
 }: SmoothCursorProps) {
-  const lastMousePos = useRef<Position>({ x: 0, y: 0 })
-  const velocity = useRef<Position>({ x: 0, y: 0 })
-  const lastUpdateTime = useRef(0)
-  const previousAngle = useRef(0)
-  const accumulatedRotation = useRef(0)
-  const [isEnabled, setIsEnabled] = useState(false)
-  const [isVisible, setIsVisible] = useState(false)
+  const lastMousePos = useRef<Position>({ x: 0, y: 0 });
+  const velocity = useRef<Position>({ x: 0, y: 0 });
+  const lastUpdateTime = useRef(0);
+  const previousAngle = useRef(0);
+  const accumulatedRotation = useRef(0);
+  const straightRef = useRef(straight);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const cursorX = useSpring(0, springConfig)
-  const cursorY = useSpring(0, springConfig)
+  const cursorX = useSpring(0, springConfig);
+  const cursorY = useSpring(0, springConfig);
   const rotation = useSpring(0, {
-    ...springConfig,
-    damping: 60,
-    stiffness: 300,
-  })
+    damping: 28,
+    stiffness: 220,
+    mass: 0.7,
+    restDelta: 0.001,
+  });
   const scale = useSpring(1, {
     ...springConfig,
     stiffness: 500,
     damping: 35,
-  })
+  });
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY)
+    const mediaQuery = window.matchMedia(DESKTOP_POINTER_QUERY);
 
     const updateEnabled = () => {
-      const nextIsEnabled = mediaQuery.matches
-      setIsEnabled(nextIsEnabled)
+      const nextIsEnabled = mediaQuery.matches;
+      setIsEnabled(nextIsEnabled);
 
       if (!nextIsEnabled) {
-        setIsVisible(false)
+        setIsVisible(false);
       }
-    }
+    };
 
-    updateEnabled()
-    mediaQuery.addEventListener("change", updateEnabled)
+    updateEnabled();
+    mediaQuery.addEventListener("change", updateEnabled);
 
     return () => {
-      mediaQuery.removeEventListener("change", updateEnabled)
+      mediaQuery.removeEventListener("change", updateEnabled);
+    };
+  }, []);
+
+  // Animate lock / unlock between upright and free rotation
+  useEffect(() => {
+    const wasStraight = straightRef.current;
+    straightRef.current = straight;
+    if (wasStraight === straight) return;
+
+    if (straight) {
+      const target = textLockTarget(accumulatedRotation.current);
+      accumulatedRotation.current = target;
+      previousAngle.current = TEXT_LOCK_ANGLE;
+      rotation.set(target);
+      scale.set(1.14);
+      const t = window.setTimeout(() => scale.set(1), 160);
+      return () => window.clearTimeout(t);
     }
-  }, [])
+
+    // Leaving text: soft settle, then velocity tilt resumes on next move
+    previousAngle.current = TEXT_LOCK_ANGLE;
+    scale.set(0.9);
+    const t = window.setTimeout(() => scale.set(1), 140);
+    return () => window.clearTimeout(t);
+  }, [straight, rotation, scale]);
 
   useEffect(() => {
     if (!isEnabled) {
-      return
+      return;
     }
 
-    let timeout: ReturnType<typeof setTimeout> | null = null
+    let timeout: ReturnType<typeof setTimeout> | null = null;
 
     const updateVelocity = (currentPos: Position) => {
-      const currentTime = Date.now()
+      const currentTime = Date.now();
       if (lastUpdateTime.current === 0) {
-        lastUpdateTime.current = currentTime
-        lastMousePos.current = currentPos
-        return
+        lastUpdateTime.current = currentTime;
+        lastMousePos.current = currentPos;
+        return;
       }
-      const deltaTime = currentTime - lastUpdateTime.current
+      const deltaTime = currentTime - lastUpdateTime.current;
 
       if (deltaTime > 0) {
         velocity.current = {
           x: (currentPos.x - lastMousePos.current.x) / deltaTime,
           y: (currentPos.y - lastMousePos.current.y) / deltaTime,
-        }
+        };
       }
 
-      lastUpdateTime.current = currentTime
-      lastMousePos.current = currentPos
-    }
+      lastUpdateTime.current = currentTime;
+      lastMousePos.current = currentPos;
+    };
 
     const smoothPointerMove = (e: PointerEvent) => {
       if (!isTrackablePointer(e.pointerType)) {
-        return
+        return;
       }
 
-      setIsVisible(true)
+      setIsVisible(true);
 
-      const currentPos = { x: e.clientX, y: e.clientY }
-      updateVelocity(currentPos)
+      const currentPos = { x: e.clientX, y: e.clientY };
+      updateVelocity(currentPos);
 
       const speed = Math.sqrt(
-        Math.pow(velocity.current.x, 2) + Math.pow(velocity.current.y, 2)
-      )
+        Math.pow(velocity.current.x, 2) + Math.pow(velocity.current.y, 2),
+      );
 
-      cursorX.set(currentPos.x)
-      cursorY.set(currentPos.y)
+      cursorX.set(currentPos.x);
+      cursorY.set(currentPos.y);
+
+      if (straightRef.current) {
+        // Hold the left-lean lock; spring already animates into it
+        const target = textLockTarget(accumulatedRotation.current);
+        accumulatedRotation.current = target;
+        rotation.set(target);
+        return;
+      }
 
       if (speed > 0.1) {
         const currentAngle =
           Math.atan2(velocity.current.y, velocity.current.x) * (180 / Math.PI) +
-          90
+          90;
 
-        let angleDiff = currentAngle - previousAngle.current
-        if (angleDiff > 180) angleDiff -= 360
-        if (angleDiff < -180) angleDiff += 360
-        accumulatedRotation.current += angleDiff
-        rotation.set(accumulatedRotation.current)
-        previousAngle.current = currentAngle
+        let angleDiff = currentAngle - previousAngle.current;
+        if (angleDiff > 180) angleDiff -= 360;
+        if (angleDiff < -180) angleDiff += 360;
+        accumulatedRotation.current += angleDiff;
+        rotation.set(accumulatedRotation.current);
+        previousAngle.current = currentAngle;
 
-        scale.set(0.95)
+        scale.set(0.95);
 
         if (timeout !== null) {
-          clearTimeout(timeout)
+          clearTimeout(timeout);
         }
 
         timeout = setTimeout(() => {
-          scale.set(1)
-        }, 150)
+          scale.set(1);
+        }, 150);
       }
-    }
+    };
 
-    let rafId = 0
+    let rafId = 0;
     const throttledPointerMove = (e: PointerEvent) => {
       if (!isTrackablePointer(e.pointerType)) {
-        return
+        return;
       }
 
-      if (rafId) return
+      if (rafId) return;
 
       rafId = requestAnimationFrame(() => {
-        smoothPointerMove(e)
-        rafId = 0
-      })
-    }
+        smoothPointerMove(e);
+        rafId = 0;
+      });
+    };
 
     document.body.classList.add("has-custom-cursor");
     document.body.dataset.nocursor = "";
